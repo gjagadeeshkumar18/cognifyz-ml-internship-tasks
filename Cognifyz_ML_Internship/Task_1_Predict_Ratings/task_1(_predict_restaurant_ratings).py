@@ -7,6 +7,9 @@ Original file is located at
     https://colab.research.google.com/drive/1lv4P_deyokALuw6Q9ndyrU786tyPAXLk
 
 **Importing** **Libraries**
+
+*  **TASK-1 -->PREDICT RESTAURANT RATING**
+***Importing  Libraries**
 """
 
 import pandas as pd
@@ -58,10 +61,11 @@ df
 
 """**Data Separation**"""
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 X = df.drop(['Aggregate rating'], axis=1)
 y = df['Aggregate rating']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_test
 
 """Model **Selection**"""
 
@@ -74,6 +78,12 @@ model.fit(X_train, y_train)
 """**Predicting Values**"""
 
 predictions = model.predict(X_test)
+
+check_1 = np.array([88, 540, 77.128443, 28.651778, 1306, 350, 4, 0, 0, 0, 0, 1, 1, 54]).reshape(1,-1)
+check_2=np.array([50, 362, 77.095432, 28.460444, 1284, 700, 4, 0, 1, 0, 0, 2, 2,84]).reshape(1,-1)
+print("Rating=",model.predict(check_1),"/5")
+
+print("Rating=",model.predict(check_2),"/5")
 
 """**Performance Metrics**"""
 
